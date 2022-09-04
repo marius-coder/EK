@@ -1,179 +1,179 @@
-﻿Gebäude;Quartier;Art Nutzung;Lüftung;Kühlung
-B001;1;Wohnen;Nein;Nein
-B002;1;Wohnen;Nein;Nein
-B003;1;Wohnen;Nein;Nein
-B004;1;Wohnen;Nein;Nein
-B005;2;Wohnen;Nein;Nein
-B006;2;Wohnen;Nein;Nein
-B007;2;Wohnen;Nein;Nein
-B008;2;Wohnen;Nein;Nein
-B009;3;Wohnen;Nein;Nein
-B010;3;Wohnen;Nein;Nein
-B011;3;Wohnen;Nein;Nein
-B012;3;Innenhof;Nein;Nein
-B013;3;EG Gewerbe;Ja;Nein
-B014;3;Gewerbe;Nein;Nein
-B015;3;EG Restaurant;Nein;Nein
-B016;4;Wohnen;Nein;Nein
-B017;4;Wohnen;Nein;Nein
-B018;4;Restaurant;Nein;Nein
-B019;4;Wohnen;Nein;Nein
-B020;4;EG Gewerbe;Nein;Nein
-B021;4;Wohnen;Nein;Nein
-B022;4;EG Gewerbe;Nein;Nein
-B023;4;Wohnen;Nein;Nein
-B024;4;Innenhof;Nein;Nein
-B025;5;Wohnen;Nein;Nein
-B026;5;EG Gewerbe;Nein;Nein
-B027;5;EG Gewerbe;Nein;Nein
-B028;5;Wohnen;Nein;Nein
-B029;5;Wohnen;Nein;Nein
-B030;5;EG Gewerbe;Nein;Nein
-B031;5;Wohnen;Nein;Nein
-B032;6;Wohnen;Nein;Nein
-B033;6;Wohnen;Nein;Nein
-B034;6;EG Gewerbe;Nein;Nein
-B035;6;Wohnen;Nein;Nein
-B036;6;Wohnen;Nein;Nein
-B037;6;Wohnen;Nein;Nein
-B038;6;EG Restaurant;Nein;Nein
-B039;6;Innenhof;Nein;Nein
-B040;6;EG Gewerbe;Nein;Nein
-B041;6;Wohnen;Nein;Nein
-B042;5;Wohnen;Nein;Nein
-B043;7;EG Gewerbe;Nein;Nein
-B044;7;Wohnen;Nein;Nein
-B045;7;Wohnen;Nein;Nein
-B046;7;EG Restaurant;Nein;Nein
-B047;7;Wohnen;Nein;Nein
-B048;7;Wohnen;Ja;Ja
-B049;7;Wohnen;Nein;Nein
-B050;7;Wohnen;Nein;Nein
-B051;8;Wohnen;Nein;Nein
-B052;9;Wohnen;Nein;Nein
-B053;9;Wohnen;Nein;Nein
-B054;9;Wohnen;Nein;Nein
-B055;9;Wohnen;Nein;Nein
-B056;10;EG Gewerbe;Nein;Nein
-B057;10;Wohnen;Nein;Nein
-B058;10;Wohnen;Nein;Nein
-B059;10;Wohnen;Nein;Nein
-B060;10;EG Restaurant;Nein;Nein
-B061;10;Wohnen;Nein;Nein
-B062;11;EG Gewerbe;Nein;Nein
-B063;12;Gewerbe;Nein;Nein
-B064;12;Gewerbe;Nein;Nein
-B065;12;Gewerbe;Nein;Nein
-B066;12;Gewerbe;Nein;Nein
-B067;12;Innenhof;Nein;Nein
-B068;12;EG Gewerbe;Ja;Ja
-B069;12;Wohnen;Nein;Nein
-B070;12;Wohnen;Nein;Nein
-B071;13;Wohnen;Nein;Nein
-B072;13;Wohnen;Nein;Nein
-B073;13;Wohnen;Nein;Nein
-B074;13;Gewerbe;Nein;Nein
-B075;13;Wohnen;Nein;Nein
-B076;13;Wohnen;Nein;Nein
-B077;13;Wohnen;Nein;Nein
-B078;13;Wohnen;Nein;Nein
-B079;14;Wohnen;Nein;Nein
-B080;14;Wohnen;Nein;Nein
-B081;14;Innenhof;Nein;Nein
-B082;14;Innenhof;Nein;Nein
-B083;14;Wohnen;Nein;Nein
-B084;14;EG Gewerbe;Nein;Nein
-B085;14;Wohnen;Nein;Nein
-B086;14;Wohnen;Nein;Nein
-B087;14;Wohnen;Nein;Nein
-B088;14;Wohnen;Nein;Nein
-B089;15;Wohnen;Nein;Nein
-B090;15;Wohnen;Nein;Nein
-B091;15;Wohnen;Nein;Nein
-B092;15;Wohnen;Nein;Nein
-B093;15;Wohnen;Nein;Nein
-B094;16;Wohnen;Nein;Nein
-B095;16;Wohnen;Nein;Nein
-B096;16;Wohnen;Ja;Nein
-B097;17;EG Gewerbe;Nein;Nein
-B098;17;EG Gewerbe;Nein;Nein
-B099;17;EG Gewerbe;Nein;Nein
-B100;17;EG Gewerbe;Nein;Nein
-B101;18;Wohnen;Nein;Nein
-B102;18;Wohnen;Nein;Nein
-B103;18;Wohnen;Nein;Nein
-B104;18;Innenhof;Nein;Nein
-B105;18;Innenhof;Nein;Nein
-B106;18;Wohnen;Nein;Nein
-B107;18;Wohnen;Nein;Nein
-B108;18;Wohnen;Nein;Nein
-B109;18;Innenhof;Nein;Nein
-B110;18;Wohnen;Nein;Nein
-B111;19;Gewerbe;Nein;Nein
-B112;19;Wohnen;Nein;Nein
-B113;19;Wohnen;Nein;Nein
-B114;19;Wohnen;Nein;Nein
-B115;19;Innenhof;Nein;Nein
-B116;19;Gewerbe;Nein;Nein
-B117;19;Innenhof;Nein;Nein
-B118;19;Gewerbe;Nein;Nein
-B119;19;Wohnen;Nein;Nein
-B120;19;Wohnen;Nein;Nein
-B121;19;Innenhof;Nein;Nein
-B122;19;Innenhof;Nein;Nein
-B123;19;Wohnen;Nein;Nein
-B124;19;Wohnen;Nein;Nein
-B125;19;Wohnen;Nein;Nein
-B126;19;Wohnen;Nein;Nein
-B127;19;Innenhof;Nein;Nein
-B128;20;Gewerbe;Nein;Nein
-B129;20;Gewerbe;Nein;Nein
-B130;20;EG Gewerbe;Ja;Ja
-B131;20;EG Gewerbe;Nein;Nein
-B132;20;Gewerbe;Nein;Nein
-B133;21;EG Gewerbe;Ja;Ja
-B134;21;Wohnen;Nein;Nein
-B135;21;Wohnen;Nein;Nein
-B136;21;Wohnen;Nein;Nein
-B137;21;Wohnen;Nein;Nein
-B138;21;Wohnen;Nein;Nein
-B139;21;Wohnen;Nein;Nein
-B140;21;Wohnen;Nein;Nein
-B141;21;Innenhof;Nein;Nein
-B142;21;Wohnen;Nein;Nein
-B143;21;Wohnen;Nein;Nein
-B144;21;Wohnen;Nein;Nein
-B145;21;Wohnen;Nein;Nein
-B146;22;Wohnen;Ja;Nein
-B147;22;Wohnen;Nein;Nein
-B148;22;Wohnen;Nein;Nein
-B149;22;Wohnen;Nein;Nein
-B150;22;Wohnen;Nein;Nein
-B151;22;Wohnen;Ja;Nein
-B152;22;Wohnen;Nein;Nein
-B153;22;Wohnen;Nein;Nein
-B154;22;Innenhof;Nein;Nein
-B155;23;Wohnen;Nein;Nein
-B156;23;Wohnen;Nein;Nein
-B157;23;Wohnen;Nein;Nein
-B158;23;Wohnen;Nein;Nein
-B159;23;EG Gewerbe;Nein;Nein
-B160;23;Gewerbe;Nein;Nein
-B161;23;Wohnen;Nein;Nein
-B162;23;Gewerbe;Nein;Nein
-B163;23;Wohnen;Nein;Nein
-B164;24;Wohnen;Nein;Nein
-B165;24;Wohnen;Nein;Nein
-B166;24;Wohnen;Nein;Nein
-B167;24;Wohnen;Nein;Nein
-B168;25;EG Gewerbe;Nein;Nein
-B169;25;Wohnen;Nein;Nein
-B170;25;Wohnen;Nein;Nein
-B171;25;Wohnen;Nein;Nein
-B172;25;Wohnen;Nein;Nein
-B173;25;Wohnen;Nein;Nein
-B174;25;Wohnen;Nein;Nein
-B175;25;Wohnen;Nein;Nein
-B176;26;Wohnen;Nein;Nein
-B177;4;Gewerbe;Nein;Nein
-B178;5;Innenhof;Nein;Nein
+﻿Gebäude;Quartier;Art Nutzung;Lüftung;Kühlung;;;;;;;;;;;;
+B001;1;Wohnen;Nein;Nein;;;;;;;;;;;;
+B002;1;Wohnen;Nein;Nein;;;;;;;;;;;;
+B003;1;Wohnen;Nein;Nein;;;;;;;;;;;;
+B004;1;Wohnen;Nein;Nein;;;;;;;;;;;;
+B005;2;Wohnen;Nein;Nein;;;;;;;;;;;;
+B006;2;Wohnen;Nein;Nein;;;;;;;;;;;;
+B007;2;Wohnen;Nein;Nein;;;;;;;;;;;;
+B008;2;Wohnen;Nein;Nein;;;;;;;;;;;Stockwerke;5
+B009;3;Wohnen;Nein;Nein;;;;;;;;;;;Fläche;10
+B010;3;Wohnen;Nein;Nein;;;;;;;;;;;Leistung;15
+B011;3;Wohnen;Nein;Nein;;;;;;;;;;;Fläche Gewerbe;2
+B012;3;Innenhof;Nein;Nein;;;;;;;;;;;;
+B013;3;EG Gewerbe;Ja;Nein;;;;;;;;;;;;3
+B014;3;Gewerbe;Nein;Nein;;;;;;;;;;;;
+B015;3;EG Restaurant;Nein;Nein;;;;;;;;;;;;
+B016;4;Wohnen;Nein;Nein;;;;;;;;;;;;
+B017;4;Wohnen;Nein;Nein;;;;;;;;;;;;
+B018;4;Restaurant;Nein;Nein;;;;;;;;;;;;
+B019;4;Wohnen;Nein;Nein;;;;;;;;;;;;
+B020;4;EG Gewerbe;Nein;Nein;;;;;;;;;;;;
+B021;4;Wohnen;Nein;Nein;;;;;;;;;;;;
+B022;4;EG Gewerbe;Nein;Nein;;;;;;;;;;;;
+B023;4;Wohnen;Nein;Nein;;;;;;;;;;;;
+B024;4;Innenhof;Nein;Nein;;;;;;;;;;;;
+B025;5;Wohnen;Nein;Nein;;;;;;;;;;;;
+B026;5;EG Gewerbe;Nein;Nein;;;;;;;;;;;;
+B027;5;EG Gewerbe;Nein;Nein;;;;;;;;;;;;
+B028;5;Wohnen;Nein;Nein;;;;;;;;;;;;
+B029;5;Wohnen;Nein;Nein;;;;;;;;;;;;
+B030;5;EG Gewerbe;Nein;Nein;;;;;;;;;;;;
+B031;5;Wohnen;Nein;Nein;;;;;;;;;;;;
+B032;6;Wohnen;Nein;Nein;;;;;;;;;;;;
+B033;6;Wohnen;Nein;Nein;;;;;;;;;;;;
+B034;6;EG Gewerbe;Nein;Nein;;;;;;;;;;;;
+B035;6;Wohnen;Nein;Nein;;;;;;;;;;;;
+B036;6;Wohnen;Nein;Nein;;;;;;;;;;;;
+B037;6;Wohnen;Nein;Nein;;;;;;;;;;;;
+B038;6;EG Restaurant;Nein;Nein;;;;;;;;;;;;
+B039;6;Innenhof;Nein;Nein;;;;;;;;;;;;
+B040;6;EG Gewerbe;Nein;Nein;;;;;;;;;;;;
+B041;6;Wohnen;Nein;Nein;;;;;;;;;;;;
+B042;5;Wohnen;Nein;Nein;;;;;;;;;;;;
+B043;7;EG Gewerbe;Nein;Nein;;;;;;;;;;;;
+B044;7;Wohnen;Nein;Nein;;;;;;;;;;;;
+B045;7;Wohnen;Nein;Nein;;;;;;;;;;;;
+B046;7;EG Restaurant;Nein;Nein;;;;;;;;;;;;
+B047;7;Wohnen;Nein;Nein;;;;;;;;;;;;
+B048;7;Wohnen;Ja;Ja;;;;;;;;;;;;
+B049;7;Wohnen;Nein;Nein;;;;;;;;;;;;
+B050;7;Wohnen;Nein;Nein;;;;;;;;;;;;
+B051;8;Wohnen;Nein;Nein;;;;;;;;;;;;
+B052;9;Wohnen;Nein;Nein;;;;;;;;;;;;
+B053;9;Wohnen;Nein;Nein;;;;;;;;;;;;
+B054;9;Wohnen;Nein;Nein;;;;;;;;;;;;
+B055;9;Wohnen;Nein;Nein;;;;;;;;;;;;
+B056;10;EG Gewerbe;Nein;Nein;;;;;;;;;;;;
+B057;10;Wohnen;Nein;Nein;;;;;;;;;;;;
+B058;10;Wohnen;Nein;Nein;;;;;;;;;;;;
+B059;10;Wohnen;Nein;Nein;;;;;;;;;;;;
+B060;10;EG Restaurant;Nein;Nein;;;;;;;;;;;;
+B061;10;Wohnen;Nein;Nein;;;;;;;;;;;;
+B062;11;EG Gewerbe;Nein;Nein;;;;;;;;;;;;
+B063;12;Gewerbe;Nein;Nein;;;;;;;;;;;;
+B064;12;Gewerbe;Nein;Nein;;;;;;;;;;;;
+B065;12;Gewerbe;Nein;Nein;;;;;;;;;;;;
+B066;12;Gewerbe;Nein;Nein;;;;;;;;;;;;
+B067;12;Innenhof;Nein;Nein;;;;;;;;;;;;
+B068;12;EG Gewerbe;Ja;Ja;;;;;;;;;;;;
+B069;12;Wohnen;Nein;Nein;;;;;;;;;;;;
+B070;12;Wohnen;Nein;Nein;;;;;;;;;;;;
+B071;13;Wohnen;Nein;Nein;;;;;;;;;;;;
+B072;13;Wohnen;Nein;Nein;;;;;;;;;;;;
+B073;13;Wohnen;Nein;Nein;;;;;;;;;;;;
+B074;13;Gewerbe;Nein;Nein;;;;;;;;;;;;
+B075;13;Wohnen;Nein;Nein;;;;;;;;;;;;
+B076;13;Wohnen;Nein;Nein;;;;;;;;;;;;
+B077;13;Wohnen;Nein;Nein;;;;;;;;;;;;
+B078;13;Wohnen;Nein;Nein;;;;;;;;;;;;
+B079;14;Wohnen;Nein;Nein;;;;;;;;;;;;
+B080;14;Wohnen;Nein;Nein;;;;;;;;;;;;
+B081;14;Innenhof;Nein;Nein;;;;;;;;;;;;
+B082;14;Innenhof;Nein;Nein;;;;;;;;;;;;
+B083;14;Wohnen;Nein;Nein;;;;;;;;;;;;
+B084;14;EG Gewerbe;Nein;Nein;;;;;;;;;;;;
+B085;14;Wohnen;Nein;Nein;;;;;;;;;;;;
+B086;14;Wohnen;Nein;Nein;;;;;;;;;;;;
+B087;14;Wohnen;Nein;Nein;;;;;;;;;;;;
+B088;14;Wohnen;Nein;Nein;;;;;;;;;;;;
+B089;15;Wohnen;Nein;Nein;;;;;;;;;;;;
+B090;15;Wohnen;Nein;Nein;;;;;;;;;;;;
+B091;15;Wohnen;Nein;Nein;;;;;;;;;;;;
+B092;15;Wohnen;Nein;Nein;;;;;;;;;;;;
+B093;15;Wohnen;Nein;Nein;;;;;;;;;;;;
+B094;16;Wohnen;Nein;Nein;;;;;;;;;;;;
+B095;16;Wohnen;Nein;Nein;;;;;;;;;;;;
+B096;16;Wohnen;Ja;Nein;;;;;;;;;;;;
+B097;17;EG Gewerbe;Nein;Nein;;;;;;;;;;;;
+B098;17;EG Gewerbe;Nein;Nein;;;;;;;;;;;;
+B099;17;EG Gewerbe;Nein;Nein;;;;;;;;;;;;
+B100;17;EG Gewerbe;Nein;Nein;;;;;;;;;;;;
+B101;18;Wohnen;Nein;Nein;;;;;;;;;;;;
+B102;18;Wohnen;Nein;Nein;;;;;;;;;;;;
+B103;18;Wohnen;Nein;Nein;;;;;;;;;;;;
+B104;18;Innenhof;Nein;Nein;;;;;;;;;;;;
+B105;18;Innenhof;Nein;Nein;;;;;;;;;;;;
+B106;18;Wohnen;Nein;Nein;;;;;;;;;;;;
+B107;18;Wohnen;Nein;Nein;;;;;;;;;;;;
+B108;18;Wohnen;Nein;Nein;;;;;;;;;;;;
+B109;18;Innenhof;Nein;Nein;;;;;;;;;;;;
+B110;18;Wohnen;Nein;Nein;;;;;;;;;;;;
+B111;19;Gewerbe;Nein;Nein;;;;;;;;;;;;
+B112;19;Wohnen;Nein;Nein;;;;;;;;;;;;
+B113;19;Wohnen;Nein;Nein;;;;;;;;;;;;
+B114;19;Wohnen;Nein;Nein;;;;;;;;;;;;
+B115;19;Innenhof;Nein;Nein;;;;;;;;;;;;
+B116;19;Gewerbe;Nein;Nein;;;;;;;;;;;;
+B117;19;Innenhof;Nein;Nein;;;;;;;;;;;;
+B118;19;Gewerbe;Nein;Nein;;;;;;;;;;;;
+B119;19;Wohnen;Nein;Nein;;;;;;;;;;;;
+B120;19;Wohnen;Nein;Nein;;;;;;;;;;;;
+B121;19;Innenhof;Nein;Nein;;;;;;;;;;;;
+B122;19;Innenhof;Nein;Nein;;;;;;;;;;;;
+B123;19;Wohnen;Nein;Nein;;;;;;;;;;;;
+B124;19;Wohnen;Nein;Nein;;;;;;;;;;;;
+B125;19;Wohnen;Nein;Nein;;;;;;;;;;;;
+B126;19;Wohnen;Nein;Nein;;;;;;;;;;;;
+B127;19;Innenhof;Nein;Nein;;;;;;;;;;;;
+B128;20;Gewerbe;Nein;Nein;;;;;;;;;;;;
+B129;20;Gewerbe;Nein;Nein;;;;;;;;;;;;
+B130;20;EG Gewerbe;Ja;Ja;;;;;;;;;;;;
+B131;20;EG Gewerbe;Nein;Nein;;;;;;;;;;;;
+B132;20;Gewerbe;Nein;Nein;;;;;;;;;;;;
+B133;21;EG Gewerbe;Ja;Ja;;;;;;;;;;;;
+B134;21;Wohnen;Nein;Nein;;;;;;;;;;;;
+B135;21;Wohnen;Nein;Nein;;;;;;;;;;;;
+B136;21;Wohnen;Nein;Nein;;;;;;;;;;;;
+B137;21;Wohnen;Nein;Nein;;;;;;;;;;;;
+B138;21;Wohnen;Nein;Nein;;;;;;;;;;;;
+B139;21;Wohnen;Nein;Nein;;;;;;;;;;;;
+B140;21;Wohnen;Nein;Nein;;;;;;;;;;;;
+B141;21;Innenhof;Nein;Nein;;;;;;;;;;;;
+B142;21;Wohnen;Nein;Nein;;;;;;;;;;;;
+B143;21;Wohnen;Nein;Nein;;;;;;;;;;;;
+B144;21;Wohnen;Nein;Nein;;;;;;;;;;;;
+B145;21;Wohnen;Nein;Nein;;;;;;;;;;;;
+B146;22;Wohnen;Ja;Nein;;;;;;;;;;;;
+B147;22;Wohnen;Nein;Nein;;;;;;;;;;;;
+B148;22;Wohnen;Nein;Nein;;;;;;;;;;;;
+B149;22;Wohnen;Nein;Nein;;;;;;;;;;;;
+B150;22;Wohnen;Nein;Nein;;;;;;;;;;;;
+B151;22;Wohnen;Ja;Nein;;;;;;;;;;;;
+B152;22;Wohnen;Nein;Nein;;;;;;;;;;;;
+B153;22;Wohnen;Nein;Nein;;;;;;;;;;;;
+B154;22;Innenhof;Nein;Nein;;;;;;;;;;;;
+B155;23;Wohnen;Nein;Nein;;;;;;;;;;;;
+B156;23;Wohnen;Nein;Nein;;;;;;;;;;;;
+B157;23;Wohnen;Nein;Nein;;;;;;;;;;;;
+B158;23;Wohnen;Nein;Nein;;;;;;;;;;;;
+B159;23;EG Gewerbe;Nein;Nein;;;;;;;;;;;;
+B160;23;Gewerbe;Nein;Nein;;;;;;;;;;;;
+B161;23;Wohnen;Nein;Nein;;;;;;;;;;;;
+B162;23;Gewerbe;Nein;Nein;;;;;;;;;;;;
+B163;23;Wohnen;Nein;Nein;;;;;;;;;;;;
+B164;24;Wohnen;Nein;Nein;;;;;;;;;;;;
+B165;24;Wohnen;Nein;Nein;;;;;;;;;;;;
+B166;24;Wohnen;Nein;Nein;;;;;;;;;;;;
+B167;24;Wohnen;Nein;Nein;;;;;;;;;;;;
+B168;25;EG Gewerbe;Nein;Nein;;;;;;;;;;;;
+B169;25;Wohnen;Nein;Nein;;;;;;;;;;;;
+B170;25;Wohnen;Nein;Nein;;;;;;;;;;;;
+B171;25;Wohnen;Nein;Nein;;;;;;;;;;;;
+B172;25;Wohnen;Nein;Nein;;;;;;;;;;;;
+B173;25;Wohnen;Nein;Nein;;;;;;;;;;;;
+B174;25;Wohnen;Nein;Nein;;;;;;;;;;;;
+B175;25;Wohnen;Nein;Nein;;;;;;;;;;;;
+B176;26;Wohnen;Nein;Nein;;;;;;;;;;;;
+B177;4;Gewerbe;Nein;Nein;;;;;;;;;;;;
+B178;5;Innenhof;Nein;Nein;;;;;;;;;;;;
