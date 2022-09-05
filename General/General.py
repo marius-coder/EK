@@ -76,10 +76,13 @@ def EditInternalLoads(dic_Buildings:dict, quartier:int, i:int):
         table.open(dbf.READ_WRITE) #open dbf file with write privileges
         
         for key,val in dic_Buildings.items():
+
             buildingPersonen =(val * 100 * personen)/sum([i*100 for i in dic_Buildings.values()])
-            area = data["geometry"][key].area  * data["floors_ag"][key]
+            area = data["geometry"][key].area * data["floors_ag"][key]
             index = datenBuildings[datenBuildings['Gebäude'] == f'B{str(key+1).zfill(3)}'].index
             areaPerPerson = area / buildingPersonen
+            if areaPerPerson < 3: 
+                print("")
             floors = data["floors_ag"][key]
             area = data["geometry"][key].area
             typ = datenBuildings["Art Nutzung"][index[0]]
@@ -138,9 +141,10 @@ def GetTypology()->dict:
             EditSupplySystems(dic_Buildings= dic_Buildings, quartier= quartier, i=i)
             EditAirConditioning(dic_Buildings= dic_Buildings, quartier= quartier, i=i)
 
+liBaujahre = []
 def CalcSanierung(quartier:int) -> int:
     baujahr = random.randint(baujahre[datenGenerell["Bauzeit"][quartier-1]][0],baujahre[datenGenerell["Bauzeit"][quartier-1]][1])
-    print(baujahr)
+    liBaujahre.append(baujahr)
     sanJahr = baujahr + floor((2022-baujahr)/Sanierungszyklus) * Sanierungszyklus
     return sanJahr
 
@@ -174,3 +178,6 @@ with dbf.Table('architecture.dbf') as table:
         record.TYPE_WALL = "WALL_"+sanQual
         record.TYPE_WIN = "WINDOW_"+sanQual
 
+inter = pd.DataFrame(liBaujahre)
+print(inter.info())
+inter.to_csv("Baujahre.csv")
