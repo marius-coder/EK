@@ -4,6 +4,9 @@ import dbf
 import geopandas as gpd
 import pandas as pd
 from math import floor
+import random
+
+random.seed(10)
 
 datenGenerell = pd.read_csv("Daten.csv", sep= ";")
 #print(datenGenerell.info())
@@ -24,10 +27,10 @@ timelines= {
     }
 
 baujahre= {
-    "Gründerzeit" : 1873,
-    "Wiederaufbau (1945-1960)" : 1945,
-    "Wirtschaftswunder (1961-1980)" : 1961,
-    "Gemischt (1961-1980)" : 1981    
+    "Gründerzeit" : [1873,1944],
+    "Wiederaufbau (1945-1960)" : [1945,1960],
+    "Wirtschaftswunder (1961-1980)" : [1961,1980],
+    "Gemischt (1961-1980)" : [1981,1990]
     }
 
 WW = {
@@ -136,7 +139,8 @@ def GetTypology()->dict:
             EditAirConditioning(dic_Buildings= dic_Buildings, quartier= quartier, i=i)
 
 def CalcSanierung(quartier:int) -> int:
-    baujahr = baujahre[datenGenerell["Bauzeit"][quartier-1]]
+    baujahr = random.randint(baujahre[datenGenerell["Bauzeit"][quartier-1]][0],baujahre[datenGenerell["Bauzeit"][quartier-1]][1])
+    print(baujahr)
     sanJahr = baujahr + floor((2022-baujahr)/Sanierungszyklus) * Sanierungszyklus
     return sanJahr
 

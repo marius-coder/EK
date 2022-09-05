@@ -15,12 +15,20 @@ flächen = pd.read_csv("D:/EK/1/outputs/data/demand/Total_demand.csv", sep= ",", 
 losses = ["Qhs_sys_kWh"]
 
 for i, buildingName in enumerate(files):
+    #Wärmeseite
     building = pd.read_csv(buildingName, sep= ",", decimal= ".")
     HWB = building["Qhs_sys_kWh"].sum() / flächen["GFA_m2"][i]
-    #print(f"HWB: {HWB}")
-    KWB = (building["Qcs_lat_sys_kWh"].sum() + building["Qcs_sen_sys_kWh"].sum()) / flächen["GFA_m2"][i]
-    print(f"KWB: {KWB}")
+    Heizlast = building["Qhs_sys_kWh"].max()
 
+    #Kälteseite
+    KWB = (building["Qcs_lat_sys_kWh"].sum() + building["Qcs_sen_sys_kWh"].sum()) / flächen["GFA_m2"][i]
+    Kühllast = building[['Qcs_lat_sys_kWh', 'Qcs_sen_sys_kWh']].sum(1).max()
+    print(Kühllast)
+
+    #Stromseite
+    stromBedarf = building["E_sys_kWh"].sum() / flächen["GFA_m2"][i]
+    maxLeistung = building["E_sys_kWh"].max()
+    print(maxLeistung)
 
 
 
