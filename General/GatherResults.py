@@ -9,8 +9,8 @@ import glob
 
 
 
-files = glob.glob("C:/Users/mariu/EK/1/outputs/data/demand/B*.csv")
-flächen = pd.read_csv("C:/Users/mariu/EK/1/outputs/data/demand/Total_demand.csv", sep= ",", decimal= ".")
+files = glob.glob("D:/EK/1/outputs/data/demand/B*.csv")
+flächen = pd.read_csv("D:/EK/1/outputs/data/demand/Total_demand.csv", sep= ",", decimal= ".")
 
 losses = ["Qhs_sys_kWh"]
 
