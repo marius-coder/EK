@@ -42,6 +42,8 @@ WW = {
     "EG Gewerbe" : 15
     }
 
+PersProm2 = 5
+
 def CalcWWVerbrauch(area, buildingPersonen, typ, floors):
     #print(typ)
     if "EG" in typ:
@@ -70,76 +72,103 @@ def GetCoolingDemand(area, floors, typ):
         return 0,0,0
 
 
-def EditInternalLoads(dic_Buildings:dict, quartier:int, i:int):
+def EditInternalLoads(buildingID):
+
+
+    dic_Buildings, quartier = GetQuartierInfo(buildingID= buildingID)
     personen= datenGenerell["Einwohnerdichte"][quartier-1]
+    index= int(buildingID[1:])-1
     with dbf.Table('internal_loads.dbf') as table:
         table.open(dbf.READ_WRITE) #open dbf file with write privileges
-        
+        areasum = 0
         for key,val in dic_Buildings.items():
+            if datenBuildings['Quartier'][int(key[1:])-1] != "Innenhof": 
+                areasum += data["geometry"][int(key[1:])-1].area * data["floors_ag"][int(key[1:])-1]
 
-            buildingPersonen =(val * 100 * personen)/sum([i*100 for i in dic_Buildings.values()])
-            area = data["geometry"][key].area * data["floors_ag"][key]
-            index = datenBuildings[datenBuildings['Gebäude'] == f'B{str(key+1).zfill(3)}'].index
-            areaPerPerson = area / buildingPersonen
-            if areaPerPerson < 3: 
-                print("")
-            floors = data["floors_ag"][key]
-            area = data["geometry"][key].area
-            typ = datenBuildings["Art Nutzung"][index[0]]
-            wwVerbrauch = CalcWWVerbrauch(area= area, buildingPersonen= buildingPersonen, typ= typ, floors= floors)
-            #print(wwVerbrauch)
-            i += 1
-            with table[key] as rec:
+        val = dic_Buildings[buildingID]
+        area = data["geometry"][index].area * data["floors_ag"][index] * val
+        areaPerPerson = areasum / personen * val + (1-val) * PersProm2
+
+        if areaPerPerson < 4:
+            print("")
+
+        floors = data["floors_ag"][index]
+        area = data["geometry"][index].area
+        typ = datenBuildings["Art Nutzung"][index]
+        buildingPersonen = (area*floors) / areaPerPerson 
+        wwVerbrauch = CalcWWVerbrauch(area= area, buildingPersonen= buildingPersonen, typ= typ, floors= floors)
+         
+        if datenBuildings['Quartier'][int(buildingID[1:])-1] != "Innenhof":         
+            with table[index] as rec:
                 rec.OCC_M2P = areaPerPerson
                 rec.VWW_LDP = wwVerbrauch
                 rec.VW_LDP = wwVerbrauch * 4                
                 rec.QCRE_WM2 = GetCoolingDemand(area= area, floors= floors, typ= typ)[0]
                 rec.ED_WM2 = GetCoolingDemand(area= area, floors= floors, typ= typ)[1]
                 rec.EPRO_WM2 = GetCoolingDemand(area= area, floors= floors, typ= typ)[2]
+        else:
+            with table[index] as rec:
+                rec.OCC_M2P = 0
+                rec.VWW_LDP = 0
+                rec.VW_LDP = 0               
+                rec.QCRE_WM2 = 0
+                rec.ED_WM2 = 0
+                rec.EPRO_WM2 = 0
 
-def EditSupplySystems(dic_Buildings:dict, quartier:int, i:int):
+def EditSupplySystems(buildingID):
     with dbf.Table('supply_systems.dbf') as table:
         table.open(dbf.READ_WRITE) #open dbf file with write privileges
-        for key,val in dic_Buildings.items():
-            index = datenBuildings[datenBuildings['Gebäude'] == f'B{str(key+1).zfill(3)}'].index
-            if datenBuildings["Kühlung"][index[0]] == "Ja":
-                with table[key] as rec:
-                    rec.TYPE_CS = "SUPPLY_COOLING_AS1"
+        index = datenBuildings.index[datenBuildings['Gebäude'] == buildingID].tolist()[0]
+        if datenBuildings["Kühlung"][index] == "Ja":
+            index= int(buildingID[1:])-1
+            with table[index] as rec:
+                rec.TYPE_CS = "SUPPLY_COOLING_AS1"
 
-def EditAirConditioning(dic_Buildings:dict, quartier:int, i:int):
+def EditAirConditioning(buildingID):
     with dbf.Table('air_conditioning.dbf') as table:
         table.open(dbf.READ_WRITE) #open dbf file with write privileges
-        for key,val in dic_Buildings.items():
-            index = datenBuildings[datenBuildings['Gebäude'] == f'B{str(key+1).zfill(3)}'].index
-            if datenBuildings["Lüftung"][index[0]] == "Ja":
-                with table[key] as rec:
-                    rec.TYPE_VENT = "HVAC_VENTILATION_AS1"
-            if datenBuildings["Kühlung"][index[0]] == "Ja":
-                with table[key] as rec:
-                    rec.TYPE_CS = "HVAC_COOLING_AS3"
+        
+        index = datenBuildings.index[datenBuildings['Gebäude'] == buildingID].tolist()[0]
+        if datenBuildings["Lüftung"][index] == "Ja":
+            with table[index] as rec:
+                rec.TYPE_VENT = "HVAC_VENTILATION_AS1"
+        if datenBuildings["Kühlung"][index] == "Ja":
+            with table[index] as rec:
+                rec.TYPE_CS = "HVAC_COOLING_AS3"
+
+
+
+def GetQuartierInfo(buildingID):
+
+
+    quartier = datenBuildings['Quartier'][datenBuildings.index[datenBuildings['Gebäude'] == buildingID].tolist()[0]]
+    buildings = datenBuildings.index[datenBuildings['Quartier'] == quartier].tolist()
+    print(f"Gebäude: {buildingID}")
+    print(f"Quartier: {quartier}")
+    dic_Buildings = {}
+
+    with dbf.Table('typology.dbf') as table:
+        for building in buildings:
+            for use,percent in zip(["1ST_USE"],["1ST_USE_R"]):
+                if getattr(table[building],use).replace(" ","") == "MULTI_RES":
+                    dic_Buildings[f'B{str(building+1).zfill(3)}'] = getattr(table[building],percent)
+                else:
+                    dic_Buildings[f'B{str(building+1).zfill(3)}'] = 0
+    return dic_Buildings, quartier
+
+
+
 
 
 def GetTypology()->dict:
     with dbf.Table('typology.dbf') as table:
-
-        for quartier in range(1,27):
-
-            dic_Buildings = {}
-
-            for i, building in enumerate(datenBuildings[datenBuildings["Quartier"]== quartier]["Gebäude"]):
-                index= int(building[1:])-1
-
-                for use,percent in zip(["1ST_USE","2ND_USE","3RD_USE"],["1ST_USE_R","2ND_USE_R","3RD_USE_R"]):
-
-                    #print(table[index])
-                    #print(getattr(table[index],use))
-                    if getattr(table[index],use).replace(" ","") == "MULTI_RES":
-                        dic_Buildings[index] = getattr(table[index],percent)
-
+        for buildingID in range(1,179):
+            buildingID = f'B{str(buildingID).zfill(3)}'
+            print(buildingID)
             
-            EditInternalLoads(dic_Buildings= dic_Buildings, quartier= quartier, i=i)
-            EditSupplySystems(dic_Buildings= dic_Buildings, quartier= quartier, i=i)
-            EditAirConditioning(dic_Buildings= dic_Buildings, quartier= quartier, i=i)
+            EditInternalLoads(buildingID= buildingID)
+            EditSupplySystems(buildingID= buildingID)
+            EditAirConditioning(buildingID= buildingID)
 
 liBaujahre = []
 def CalcSanierung(quartier:int) -> int:

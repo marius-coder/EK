@@ -5,8 +5,8 @@ import matplotlib.pyplot as plt
 import glob
 
 if 1:
-    files = glob.glob("C:/Users/cermak/Documents/EK/1/outputs/data/demand/B*.csv")
-    flächen = pd.read_csv("C:/Users/cermak/Documents/EK/1/outputs/data/demand/Total_demand.csv", sep= ",", decimal= ".")
+    files = glob.glob("C:/Users/mariu/EK/1/outputs/data/demand/B*.csv")
+    flächen = pd.read_csv("C:/Users/mariu/EK/1/outputs/data/demand/Total_demand.csv", sep= ",", decimal= ".")
 
     losses = ["Qhs_sys_kWh"]
 

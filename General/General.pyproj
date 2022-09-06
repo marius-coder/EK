@@ -11,8 +11,7 @@
     <OutputPath>.</OutputPath>
     <Name>General</Name>
     <RootNamespace>General</RootNamespace>
-    <InterpreterId>
-    </InterpreterId>
+    <InterpreterId>Global|VisualStudio|Python39_64</InterpreterId>
     <LaunchProvider>Standard Python launcher</LaunchProvider>
     <EnableNativeCodeDebugging>False</EnableNativeCodeDebugging>
   </PropertyGroup>
