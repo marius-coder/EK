@@ -42,7 +42,7 @@ WW = {
     "EG Gewerbe" : 15
     }
 
-PersProm2 = 7
+PersProm2 = 5
 
 def CalcWWVerbrauch(area, buildingPersonen, typ, floors):
     #print(typ)

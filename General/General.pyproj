@@ -25,6 +25,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="GatherResults.py" />
+    <Compile Include="SetupInput.py" />
+    <Compile Include="Scenarios.py" />
     <Compile Include="General.py" />
     <Compile Include="Test.py" />
   </ItemGroup>
