@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>8000ec10-f370-43db-869a-3a7f9c2a077c</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>General.py</StartupFile>
+    <StartupFile>Scenarios.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -25,7 +25,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="GatherResults.py" />
-    <Compile Include="SetupInput.py" />
     <Compile Include="Scenarios.py" />
     <Compile Include="General.py" />
     <Compile Include="Test.py" />

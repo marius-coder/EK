@@ -23,7 +23,10 @@ timelines= {
     "1960-1976" : [1960,1976],
     "1976-1993" : [1976,1993],
     "1993-2001" : [1993,2001],
-    "2001+"     : [2001,9999]    
+    "2001-2019" : [2001,2019],
+    "2019-2030" : [2019,2030],
+    "2030+"     : [2030,9999]    
+
     }
 
 baujahre= {
@@ -72,13 +75,13 @@ def GetCoolingDemand(area, floors, typ):
         return 0,0,0
 
 
-def EditInternalLoads(buildingID):
+def EditInternalLoads(buildingID, path= ""):
 
 
     dic_Buildings, quartier = GetQuartierInfo(buildingID= buildingID)
     personen= datenGenerell["Einwohnerdichte"][quartier-1]
     index= int(buildingID[1:])-1
-    with dbf.Table('internal_loads.dbf') as table:
+    with dbf.Table(path+'internal_loads.dbf') as table:
         table.open(dbf.READ_WRITE) #open dbf file with write privileges
         areasum = 0
         for key,val in dic_Buildings.items():
@@ -88,9 +91,6 @@ def EditInternalLoads(buildingID):
         val = dic_Buildings[buildingID]
         area = data["geometry"][index].area * data["floors_ag"][index] * val
         areaPerPerson = areasum / personen * val + (1-val) * PersProm2
-
-        if areaPerPerson < 4:
-            print("")
 
         floors = data["floors_ag"][index]
         area = data["geometry"][index].area
@@ -115,17 +115,47 @@ def EditInternalLoads(buildingID):
                 rec.ED_WM2 = 0
                 rec.EPRO_WM2 = 0
 
-def EditSupplySystems(buildingID):
-    with dbf.Table('supply_systems.dbf') as table:
+def EditSupplySystems2(buildingID, path= ""):
+    with dbf.Table(path+'supply_systems.dbf') as table:
         table.open(dbf.READ_WRITE) #open dbf file with write privileges
         index = datenBuildings.index[datenBuildings['Gebäude'] == buildingID].tolist()[0]
         if datenBuildings["Kühlung"][index] == "Ja":
-            index= int(buildingID[1:])-1
-            with table[index] as rec:
+            index2= int(buildingID[1:])-1
+            with table[index2] as rec:
                 rec.TYPE_CS = "SUPPLY_COOLING_AS1"
+        if datenBuildings["Art Heizung"][index] == "Fernwärme":
+            index2= int(buildingID[1:])-1
+            with table[index2] as rec:
+                rec.TYPE_DHW = "SUPPLY_HOTWATER_AS9"
+                rec.TYPE_HS = "SUPPLY_HEATING_AS9"
+        else:
+            index2= int(buildingID[1:])-1
+            with table[index2] as rec:
+                rec.TYPE_DHW = "SUPPLY_HOTWATER_AS3"
+                rec.TYPE_HS = "SUPPLY_HEATING_AS3"
 
-def EditAirConditioning(buildingID):
-    with dbf.Table('air_conditioning.dbf') as table:
+def EditSupplySystems(buildingID, path= ""):
+    with dbf.Table(path+'supply_systems.dbf') as table:
+        table.open(dbf.READ_WRITE) #open dbf file with write privileges
+        index = datenBuildings.index[datenBuildings['Gebäude'] == buildingID].tolist()[0]
+        if datenBuildings["Kühlung"][index] == "Ja":
+            index2= int(buildingID[1:])-1
+            with table[index2] as rec:
+                rec.TYPE_CS = "SUPPLY_COOLING_AS1"
+        if datenBuildings["Art Heizung"][index] == "Fernwärme":
+            index2= int(buildingID[1:])-1
+            with table[index2] as rec:
+                rec.TYPE_DHW = "SUPPLY_HOTWATER_AS9"
+                rec.TYPE_HS = "SUPPLY_HEATING_AS9"
+        else:
+            index2= int(buildingID[1:])-1
+            with table[index2] as rec:
+                rec.TYPE_DHW = "SUPPLY_HOTWATER_AS3"
+                rec.TYPE_HS = "SUPPLY_HEATING_AS3"
+
+
+def EditAirConditioning(buildingID, path= ""):
+    with dbf.Table(path+'air_conditioning.dbf') as table:
         table.open(dbf.READ_WRITE) #open dbf file with write privileges
         
         index = datenBuildings.index[datenBuildings['Gebäude'] == buildingID].tolist()[0]
@@ -138,16 +168,13 @@ def EditAirConditioning(buildingID):
 
 
 
-def GetQuartierInfo(buildingID):
-
-
+def GetQuartierInfo(buildingID, path= ""):
     quartier = datenBuildings['Quartier'][datenBuildings.index[datenBuildings['Gebäude'] == buildingID].tolist()[0]]
     buildings = datenBuildings.index[datenBuildings['Quartier'] == quartier].tolist()
-    print(f"Gebäude: {buildingID}")
-    print(f"Quartier: {quartier}")
+
     dic_Buildings = {}
 
-    with dbf.Table('typology.dbf') as table:
+    with dbf.Table(path+'typology.dbf') as table:
         for building in buildings:
             for use,percent in zip(["1ST_USE"],["1ST_USE_R"]):
                 if getattr(table[building],use).replace(" ","") == "MULTI_RES":
@@ -158,23 +185,21 @@ def GetQuartierInfo(buildingID):
 
 
 
-
-
-def GetTypology()->dict:
-    with dbf.Table('typology.dbf') as table:
+def GetTypology(path="")->dict:
+    with dbf.Table(path+'typology.dbf') as table:
         for buildingID in range(1,179):
             buildingID = f'B{str(buildingID).zfill(3)}'
-            print(buildingID)
+            #print(buildingID)
             
             EditInternalLoads(buildingID= buildingID)
             EditSupplySystems(buildingID= buildingID)
             EditAirConditioning(buildingID= buildingID)
 
 liBaujahre = []
-def CalcSanierung(quartier:int) -> int:
+def CalcSanierung(quartier:int, currentYear) -> int:
     baujahr = random.randint(baujahre[datenGenerell["Bauzeit"][quartier-1]][0],baujahre[datenGenerell["Bauzeit"][quartier-1]][1])
     liBaujahre.append(baujahr)
-    sanJahr = baujahr + floor((2022-baujahr)/Sanierungszyklus) * Sanierungszyklus
+    sanJahr = baujahr + floor((currentYear-baujahr)/Sanierungszyklus) * Sanierungszyklus
     return sanJahr
 
 def GetQuartiersNummer(building:str)->int:
@@ -185,28 +210,42 @@ def GetTimeline(sanJahr:int) -> str:
         if sanJahr in range(val[0],val[1]):
             return key
 
-def GetValue(building:str) -> str:
+def GetValue(building:str, currentYear) -> str:
     quartier= GetQuartiersNummer(building= building)
 
-    sanJahr= CalcSanierung(quartier)    
+    sanJahr= CalcSanierung(quartier, currentYear= currentYear)    
     sanQual = GetTimeline(sanJahr)   
     return sanQual
 
 GetTypology()
 
-with dbf.Table('architecture.dbf') as table:
-    table.open(dbf.READ_WRITE) #open dbf file with write privileges
-    for i,record in enumerate(dbf.Process(table)): #iterate entries
-        #print(f"Building: {record.NAME}")
-        sanQual = GetValue(building= record.name.replace(" ",""))
+def AddVentilation(buildingID, path):
+    with dbf.Table(path+'air_conditioning.dbf') as table:
+        table.open(dbf.READ_WRITE) #open dbf file with write privileges
+        index= int(buildingID[1:])-1
+        with table[index] as rec:
+            rec.TYPE_VENT = "HVAC_VENTILATION_AS2"
+            rec.TYPE_CTRL = "HVAC_CONTROLLER_AS2"
 
-        record.TYPE_FLOOR = "FLOOR_"+sanQual
-        record.TYPE_PART = "WALL_"+sanQual
-        record.TYPE_BASE = "FLOOR_"+sanQual
-        record.TYPE_ROOF = "ROOF_"+sanQual
-        record.TYPE_WALL = "WALL_"+sanQual
-        record.TYPE_WIN = "WINDOW_"+sanQual
 
-inter = pd.DataFrame(liBaujahre)
-print(inter.info())
-inter.to_csv("Baujahre.csv")
+def EditArchitecture(currentYear, path= ""):
+    with dbf.Table(path+'architecture.dbf') as table:
+        table.open(dbf.READ_WRITE) #open dbf file with write privileges
+        for i,record in enumerate(dbf.Process(table)): #iterate entries
+            #print(f"Building: {record.NAME}")
+            sanQual = GetValue(building= record.name.replace(" ",""), currentYear= currentYear)
+
+            record.TYPE_FLOOR = "FLOOR_"+sanQual
+            record.TYPE_PART = "WALL_"+sanQual
+            record.TYPE_BASE = "FLOOR_"+sanQual
+            record.TYPE_ROOF = "ROOF_"+sanQual
+            record.TYPE_WALL = "WALL_"+sanQual
+            record.TYPE_WIN = "WINDOW_"+sanQual
+
+            if sanQual == "2030+":
+                buildingID = f'B{str(i).zfill(3)}'
+                AddVentilation(buildingID, path)
+
+    inter = pd.DataFrame(liBaujahre)
+    #print(inter.info())
+    inter.to_csv("Baujahre.csv")
