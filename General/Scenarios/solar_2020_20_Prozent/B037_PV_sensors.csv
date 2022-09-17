@@ -1,0 +1,6 @@
+SURFACE,BUILDING,orientation,intersection,Xcoor,Ycoor,Zcoor,Xdir,Ydir,Zdir,AREA_m2,TYPE,total_rad_Whm2,tilt_deg,B_deg,array_spacing_m,surface_azimuth_deg,area_installed_module_m2,CATteta_z,CATB,CATGB,type_orientation,surface
+srf288,B037,top,0,601656.33,15336615.52,23.01,0.00,0.00,1.00,87.38,roofs,1130079.08,0.00,30.00,2.55,0.00,8.16,5,6,10,roofs_top,srf288
+srf289,B037,top,0,601656.57,15336623.56,23.01,0.00,0.00,1.00,55.43,roofs,1130295.91,0.00,30.00,2.55,0.00,5.18,5,6,10,roofs_top,srf289
+srf290,B037,top,0,601646.57,15336615.89,23.01,0.00,0.00,1.00,88.16,roofs,1130563.63,0.00,30.00,2.55,0.00,8.23,5,6,10,roofs_top,srf290
+srf291,B037,top,0,601646.64,15336623.95,23.01,0.00,0.00,1.00,62.20,roofs,1130704.31,0.00,30.00,2.55,0.00,5.81,5,6,10,roofs_top,srf291
+srf292,B037,top,0,601641.31,15336615.49,23.01,0.00,0.00,1.00,1.76,roofs,1130374.26,0.00,30.00,2.55,0.00,0.16,5,6,10,roofs_top,srf292

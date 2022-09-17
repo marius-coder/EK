@@ -197,6 +197,8 @@ def GetTypology(path="")->dict:
 
 liBaujahre = []
 def CalcSanierung(quartier:int, currentYear) -> int:
+    import random
+    random.seed(10)
     baujahr = random.randint(baujahre[datenGenerell["Bauzeit"][quartier-1]][0],baujahre[datenGenerell["Bauzeit"][quartier-1]][1])
     liBaujahre.append(baujahr)
     sanJahr = baujahr + floor((currentYear-baujahr)/Sanierungszyklus) * Sanierungszyklus

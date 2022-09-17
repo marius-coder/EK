@@ -6,9 +6,13 @@ import matplotlib.pyplot as plt
 import glob
 import dbf
 
+
+zuhause = "C:/Users/mariu/EK/1/outputs/data/demand/"
+arbeit = "C:/Users/cermak/Documents/EK/1/outputs/data/demand/"
+
 if 1:
-    files = glob.glob("C:/Users/mariu/EK/1/outputs/data/demand/B*.csv")
-    flächen = pd.read_csv("C:/Users/mariu/EK/1/outputs/data/demand/Total_demand.csv", sep= ",", decimal= ".")
+    files = glob.glob(f"{arbeit}B*.csv")
+    flächen = pd.read_csv(f"{arbeit}Total_demand.csv", sep= ",", decimal= ".")
     data = gpd.read_file("zone.shp")
     HWB = []
     Heizlast = []
@@ -24,7 +28,7 @@ if 1:
         building = pd.read_csv(buildingName, sep= ",", decimal= ".")
         HWB.append(building["Qhs_sys_kWh"].sum() / flächen["GFA_m2"][index])
         
-        if building["Qhs_sys_kWh"].sum() / flächen["GFA_m2"][index] > 150: print(index)
+        #if building["Qhs_sys_kWh"].sum() / flächen["GFA_m2"][index] > 150: print(index)
             
         Heizlast.append(building["Qhs_sys_kWh"].max() / flächen["GFA_m2"][index] * 1000)
 
@@ -65,7 +69,7 @@ data = pd.read_csv("Ergebnis.csv")
 data["Baujahr"] =  pd.read_csv("Baujahre.csv")["0"]
 
 sns.histplot(data= data["Heizlast"], bins= 100)
-plt.show()
+#plt.show()
 
 sns.scatterplot(x=data["Baujahr"], y= data["Heizlast"])
 #plt.show()

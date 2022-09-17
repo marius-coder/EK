@@ -1,0 +1,2 @@
+SURFACE,BUILDING,orientation,intersection,Xcoor,Ycoor,Zcoor,Xdir,Ydir,Zdir,AREA_m2,TYPE,total_rad_Whm2,tilt_deg,B_deg,array_spacing_m,surface_azimuth_deg,area_installed_module_m2,CATteta_z,CATB,CATGB,type_orientation,surface
+srf36,B121,top,0,601449.45,15336462.13,5.01,0.00,0.00,1.00,81.66,roofs,827869.89,0.00,30.00,2.55,0.00,7.63,5,6,10,roofs_top,srf36

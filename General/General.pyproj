@@ -11,7 +11,7 @@
     <OutputPath>.</OutputPath>
     <Name>General</Name>
     <RootNamespace>General</RootNamespace>
-    <InterpreterId>Global|VisualStudio|Python39_64</InterpreterId>
+    <InterpreterId>MSBuild|env2|$(MSBuildProjectFullPath)</InterpreterId>
     <LaunchProvider>Standard Python launcher</LaunchProvider>
     <EnableNativeCodeDebugging>False</EnableNativeCodeDebugging>
   </PropertyGroup>
@@ -30,8 +30,20 @@
     <Compile Include="Test.py" />
   </ItemGroup>
   <ItemGroup>
+    <InterpreterReference Include="Global|PythonCore|3.10" />
     <InterpreterReference Include="Global|PythonCore|3.9" />
     <InterpreterReference Include="Global|VisualStudio|Python39_64" />
+  </ItemGroup>
+  <ItemGroup>
+    <Interpreter Include="env2\">
+      <Id>env2</Id>
+      <Version>3.10</Version>
+      <Description>env2 (Python 3.10)</Description>
+      <InterpreterPath>Scripts\python.exe</InterpreterPath>
+      <WindowsInterpreterPath>Scripts\pythonw.exe</WindowsInterpreterPath>
+      <PathEnvironmentVariable>PYTHONPATH</PathEnvironmentVariable>
+      <Architecture>X64</Architecture>
+    </Interpreter>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in

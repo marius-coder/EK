@@ -35,7 +35,7 @@ def GetLastResults(prio, i):
     print(f"Bezugsjahr: {year}")
     path= f'./Scenarios/{year}/{prio}'
     print(f"Pfad vom alten Supply: {path}")
-    with dbf.Table(f"{path}/supply_systems.dbf") as table:
+    with dbf.Table(f"{path}/supply_systems.dbf") as table: #Alten Supply öffnen
         table.open(dbf.READ_WRITE) #open dbf file with write privileges
         
         for index,record in enumerate(dbf.Process(table)):
