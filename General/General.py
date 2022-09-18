@@ -65,9 +65,9 @@ ED_WM2 = 5
 def GetCoolingDemand(area, floors, typ):    
     if "EG" in typ:
         areaGewerbe = area / floors
-        demand_QCRE_WM2 = (areaGewerbe * QCRE_WM2 + 0 * floors) / (floors * area)
-        demand_ED_WM2 = (areaGewerbe * ED_WM2 + 0 * floors) / (floors * area)
-        demand_EPRO_WM2 = (areaGewerbe * EPRO_WM2 + 0 * floors) / (floors * area)
+        demand_QCRE_WM2 = int((areaGewerbe * QCRE_WM2 + 0 * floors) / (floors * area))
+        demand_ED_WM2 = int((areaGewerbe * ED_WM2 + 0 * floors) / (floors * area))
+        demand_EPRO_WM2 = int((areaGewerbe * EPRO_WM2 + 0 * floors) / (floors * area))
         return demand_QCRE_WM2, demand_ED_WM2, demand_EPRO_WM2
     elif typ == "Gewerbe" or typ == "Restaurant":
         return QCRE_WM2, ED_WM2, EPRO_WM2
@@ -90,7 +90,7 @@ def EditInternalLoads(buildingID, path= ""):
 
         val = dic_Buildings[buildingID]
         area = data["geometry"][index].area * data["floors_ag"][index] * val
-        areaPerPerson = areasum / personen * val + (1-val) * PersProm2
+        areaPerPerson = int(areasum / personen * val + (1-val) * PersProm2)
 
         floors = data["floors_ag"][index]
         area = data["geometry"][index].area
@@ -100,12 +100,14 @@ def EditInternalLoads(buildingID, path= ""):
          
         if datenBuildings['Quartier'][int(buildingID[1:])-1] != "Innenhof":         
             with table[index] as rec:
-                rec.OCC_M2P = areaPerPerson
-                rec.VWW_LDP = wwVerbrauch
-                rec.VW_LDP = wwVerbrauch * 4                
-                rec.QCRE_WM2 = GetCoolingDemand(area= area, floors= floors, typ= typ)[0]
-                rec.ED_WM2 = GetCoolingDemand(area= area, floors= floors, typ= typ)[1]
-                rec.EPRO_WM2 = GetCoolingDemand(area= area, floors= floors, typ= typ)[2]
+                rec.OCC_M2P = int(areaPerPerson)
+                rec.VWW_LDP = int(wwVerbrauch)
+                rec.VW_LDP = int(wwVerbrauch * 4)
+                rec.EA_WM2 = 6
+                rec.EL_WM2 = 2
+                rec.QCRE_WM2 = int(GetCoolingDemand(area= area, floors= floors, typ= typ)[0])
+                rec.ED_WM2 = int(GetCoolingDemand(area= area, floors= floors, typ= typ)[1])
+                rec.EPRO_WM2 = int(GetCoolingDemand(area= area, floors= floors, typ= typ)[2])
         else:
             with table[index] as rec:
                 rec.OCC_M2P = 0

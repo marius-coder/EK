@@ -5,19 +5,21 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 import glob
 import dbf
+import shutil
 
-
+from Scenarios import RunScen, ResetSupply
 zuhause = "C:/Users/mariu/EK/1/outputs/data/demand/"
 arbeit = "C:/Users/cermak/Documents/EK/1/outputs/data/demand/"
 
-if 1:
-    files = glob.glob(f"{arbeit}B*.csv")
-    flächen = pd.read_csv(f"{arbeit}Total_demand.csv", sep= ",", decimal= ".")
+def Run(path):
+    files = glob.glob(f"{zuhause}B*.csv")
+    flächen = pd.read_csv(f"{zuhause}Total_demand.csv", sep= ",", decimal= ".")
     data = gpd.read_file("zone.shp")
     HWB = []
     Heizlast = []
     heizart = []
     stromBedarf = []
+    stromBedarfHeizen = []
     maxLeistung = []
     KWB = []
     Kühllast = []
@@ -36,13 +38,16 @@ if 1:
         KWB.append((building["Qcs_lat_sys_kWh"].sum() + building["Qcs_sen_sys_kWh"].sum()) / flächen["GFA_m2"][index])
         Kühllast.append(building[['Qcs_lat_sys_kWh', 'Qcs_sen_sys_kWh']].sum(1).max())
         #print(Kühllast)
-
+        
         #Stromseite
-        stromBedarf.append(building["E_sys_kWh"].sum() / flächen["GFA_m2"][index])
+        #print(f'Fläche: {flächen["GFA_m2"][index]}')
+        #print(f'Strombedarf: {building["E_sys_kWh"].sum()}')
+        stromBedarf.append((building["E_sys_kWh"].sum() + building["E_ww_kWh"].sum() + building["E_hs_kWh"].sum() + building["Eve_kWh"].sum() + building["E_cs_kWh"].sum()) / flächen["GFA_m2"][index])
+        stromBedarfHeizen.append(building["Eaux_kWh"].sum() / flächen["GFA_m2"][index])
         maxLeistung.append(building["E_sys_kWh"].max())
         #print(maxLeistung)
 
-        with dbf.Table('supply_systems.dbf') as table:
+        with dbf.Table(f'{path}supply_systems.dbf') as table:
             table.open(dbf.READ_WRITE) #open dbf file with write privileges
             with table[index] as rec:
                 if rec.TYPE_HS.replace(" ","") == "SUPPLY_HEATING_AS3":
@@ -62,15 +67,20 @@ if 1:
     data["maxLeistung"] = maxLeistung
     data["heizart"] = heizart
     data["Fläche"] = fläche
-    data.to_csv("Ergebnis.csv")
-    
+    data["Strombedarfheizen"] = stromBedarfHeizen
+    data.to_csv(f"{path}/Ergebnis/Ergebnis.csv")
 
-data = pd.read_csv("Ergebnis.csv")
-data["Baujahr"] =  pd.read_csv("Baujahre.csv")["0"]
-
-sns.histplot(data= data["Heizlast"], bins= 100)
-#plt.show()
-
-sns.scatterplot(x=data["Baujahr"], y= data["Heizlast"])
-#plt.show()
-
+for i,year in enumerate(["2020","2024","2027","2030","2040","2050"]):
+    ResetSupply()
+    RunScen()
+    for prio in ["Prio Fernwärme","Prio Wärmepumpe"]:
+        print(f"Szenarienjahr: {year} mit prio: {prio}")
+        path = f"C:/Users/mariu/source/repos/General/General/Scenarios/{year}/{prio}/"
+        shutil.copy2(f"{path}/air_conditioning.dbf", "C:/Users/mariu/EK/1/inputs/building-properties/air_conditioning.dbf")
+        shutil.copy2(f"{path}/architecture.dbf", "C:/Users/mariu/EK/1/inputs/building-properties/architecture.dbf")
+        shutil.copy2(f"{path}/supply_systems.dbf", "C:/Users/mariu/EK/1/inputs/building-properties/supply_systems.dbf")
+        shutil.copy2(f"{path}/typology.dbf", "C:/Users/mariu/EK/1/inputs/building-properties/typology.dbf")
+        shutil.copy2(f"{path}/internal_loads.dbf", "C:/Users/mariu/EK/1/inputs/building-properties/internal_loads.dbf")
+        input("Press Enter to continue...")
+        print(f"Gathering Results from {path}")
+        Run(path)

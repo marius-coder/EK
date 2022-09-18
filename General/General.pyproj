@@ -11,7 +11,7 @@
     <OutputPath>.</OutputPath>
     <Name>General</Name>
     <RootNamespace>General</RootNamespace>
-    <InterpreterId>MSBuild|env2|$(MSBuildProjectFullPath)</InterpreterId>
+    <InterpreterId>Global|VisualStudio|Python39_64</InterpreterId>
     <LaunchProvider>Standard Python launcher</LaunchProvider>
     <EnableNativeCodeDebugging>False</EnableNativeCodeDebugging>
   </PropertyGroup>
@@ -27,6 +27,8 @@
     <Compile Include="GatherResults.py" />
     <Compile Include="Scenarios.py" />
     <Compile Include="General.py" />
+    <Compile Include="resetSupply.py" />
+    <Compile Include="Test - Copy.py" />
     <Compile Include="Test.py" />
   </ItemGroup>
   <ItemGroup>
