@@ -12,8 +12,8 @@ zuhause = "C:/Users/mariu/EK/1/outputs/data/demand/"
 arbeit = "C:/Users/cermak/Documents/EK/1/outputs/data/demand/"
 
 def Run(path):
-    files = glob.glob(f"{zuhause}B*.csv")
-    flächen = pd.read_csv(f"{zuhause}Total_demand.csv", sep= ",", decimal= ".")
+    files = glob.glob(f"{arbeit}B*.csv")
+    flächen = pd.read_csv(f"{arbeit}Total_demand.csv", sep= ",", decimal= ".")
     data = gpd.read_file("zone.shp")
     HWB = []
     Heizlast = []
@@ -73,14 +73,17 @@ def Run(path):
 for i,year in enumerate(["2020","2024","2027","2030","2040","2050"]):
     ResetSupply()
     RunScen()
+    f = 0
     for prio in ["Prio Fernwärme","Prio Wärmepumpe"]:
+
         print(f"Szenarienjahr: {year} mit prio: {prio}")
-        path = f"C:/Users/mariu/source/repos/General/General/Scenarios/{year}/{prio}/"
-        shutil.copy2(f"{path}/air_conditioning.dbf", "C:/Users/mariu/EK/1/inputs/building-properties/air_conditioning.dbf")
-        shutil.copy2(f"{path}/architecture.dbf", "C:/Users/mariu/EK/1/inputs/building-properties/architecture.dbf")
-        shutil.copy2(f"{path}/supply_systems.dbf", "C:/Users/mariu/EK/1/inputs/building-properties/supply_systems.dbf")
-        shutil.copy2(f"{path}/typology.dbf", "C:/Users/mariu/EK/1/inputs/building-properties/typology.dbf")
-        shutil.copy2(f"{path}/internal_loads.dbf", "C:/Users/mariu/EK/1/inputs/building-properties/internal_loads.dbf")
+        path = f"C:/Users/cermak/source/repos/EK/General/Scenarios/{year}/{prio}/"
+        shutil.copy2(f"{path}/air_conditioning.dbf", "C:/Users/cermak/Documents/EK/1/inputs/building-properties/air_conditioning.dbf")
+        shutil.copy2(f"{path}/architecture.dbf", "C:/Users/cermak/Documents/EK/1/inputs/building-properties/architecture.dbf")
+        shutil.copy2(f"{path}/supply_systems.dbf", "C:/Users/cermak/Documents/EK/1/inputs/building-properties/supply_systems.dbf")
+        shutil.copy2(f"{path}/typology.dbf", "C:/Users/cermak/Documents/EK/1/inputs/building-properties/typology.dbf")
+        shutil.copy2(f"{path}/internal_loads.dbf", "C:/Users/cermak/Documents/EK/1/inputs/building-properties/internal_loads.dbf")
+        print(f"In CEA sollte {f+1} stehen")
         input("Press Enter to continue...")
         print(f"Gathering Results from {path}")
         Run(path)

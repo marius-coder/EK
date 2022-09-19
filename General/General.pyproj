@@ -11,7 +11,7 @@
     <OutputPath>.</OutputPath>
     <Name>General</Name>
     <RootNamespace>General</RootNamespace>
-    <InterpreterId>Global|VisualStudio|Python39_64</InterpreterId>
+    <InterpreterId>MSBuild|env2|$(MSBuildProjectFullPath)</InterpreterId>
     <LaunchProvider>Standard Python launcher</LaunchProvider>
     <EnableNativeCodeDebugging>False</EnableNativeCodeDebugging>
   </PropertyGroup>
